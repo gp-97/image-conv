@@ -1,5 +1,3 @@
-pub mod conv;
-
 use image::{
     DynamicImage::{self, ImageRgba8},
     GenericImageView,
@@ -90,3 +88,5 @@ pub fn dynamic_to_photon(dynamic_image: &DynamicImage) -> PhotonImage {
     let image_buffer: Vec<u8> = (*dynamic_image).clone().into_bytes();
     PhotonImage::new(image_buffer, dynamic_image.width(), dynamic_image.height())
 }
+
+pub mod conv;
