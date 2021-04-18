@@ -8,7 +8,10 @@ description = "High performance image convolution library."
 categories = ["image-processing", "image-convolution"]
 readme = "./README.md"
 repository = "https://github.com/gp-97/image-conv"
-
+exclude = [
+    "assets/*",
+    "tests/test_assets/*"
+]
 
 [dependencies]
 photon-rs = "0.3.0"
