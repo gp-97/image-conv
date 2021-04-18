@@ -1,4 +1,4 @@
-//! A high performance Rust library for image convolution based on.
+//! A high performance Rust library for image convolution.
 //!
 //!
 //! ## Example
