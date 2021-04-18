@@ -1,7 +1,6 @@
 <h1 align="center">image-conv</h1>
-
+<img align="center" alt="GitHub" src="https://img.shields.io/github/license/gp-97/image-conv">
 <div align="center">
-  <img alt="GitHub" src="https://img.shields.io/github/license/gp-97/image-conv">
   [![Status](https://img.shields.io/badge/status-active-success.svg)]()
   [![GitHub Issues](https://img.shields.io/github/issues/gp-97/image-conv.svg)](https://github.com/gp-97/image-conv/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/gp-97/image-conv.svg)](https://github.com/gp-97/image-conv/pulls)
