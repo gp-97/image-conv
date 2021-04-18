@@ -4,8 +4,11 @@ version = "0.1.0"
 authors = ["Gaurav Patel <GauravPatel97@outlook.com>"]
 edition = "2018"
 license = "Apache-2.0"
+description = "High performance image convolution library."
+categories = ["image-processing", "image-convolution"]
+readme = "./README.md"
+repository = "https://github.com/gp-97/image-conv"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 photon-rs = "0.3.0"
