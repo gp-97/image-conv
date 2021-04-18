@@ -5,8 +5,8 @@ use photon_rs::monochrome;
 use photon_rs::native::{open_image, save_image};
 #[test]
 fn test_convolution_sobel_x() {
-    let inp_path = "tests/test_assets/t7.jpg";
-    let op_path = "tests/test_assets/t7_sobelX.jpg";
+    let inp_path = "tests/test_assets/t5.jpg";
+    let op_path = "tests/test_assets/t5_sobelX.jpg";
     let mut img = open_image(inp_path).expect("No such file found");
     monochrome::grayscale(&mut img);
 
@@ -18,8 +18,8 @@ fn test_convolution_sobel_x() {
 }
 #[test]
 fn test_convolution_sobel_y() {
-    let inp_path = "tests/test_assets/t7.jpg";
-    let op_path = "tests/test_assets/t7_sobelY.jpg";
+    let inp_path = "tests/test_assets/t5.jpg";
+    let op_path = "tests/test_assets/t5_sobelY.jpg";
     let mut img = open_image(inp_path).expect("No such file found");
     monochrome::grayscale(&mut img);
 
@@ -31,8 +31,8 @@ fn test_convolution_sobel_y() {
 }
 #[test]
 fn test_convolution_scharr_x() {
-    let inp_path = "tests/test_assets/t7.jpg";
-    let op_path = "tests/test_assets/t7_scharrX.jpg";
+    let inp_path = "tests/test_assets/t5.jpg";
+    let op_path = "tests/test_assets/t5_scharrX.jpg";
     let mut img = open_image(inp_path).expect("No such file found");
     monochrome::grayscale(&mut img);
 
@@ -44,8 +44,8 @@ fn test_convolution_scharr_x() {
 }
 #[test]
 fn test_convolution_scharr_y() {
-    let inp_path = "tests/test_assets/t7.jpg";
-    let op_path = "tests/test_assets/t7_scharrY.jpg";
+    let inp_path = "tests/test_assets/t5.jpg";
+    let op_path = "tests/test_assets/t5_scharrY.jpg";
     let mut img = open_image(inp_path).expect("No such file found");
     monochrome::grayscale(&mut img);
 
@@ -57,8 +57,8 @@ fn test_convolution_scharr_y() {
 }
 #[test]
 fn test_convolution_laplacian() {
-    let inp_path = "tests/test_assets/t7.jpg";
-    let op_path = "tests/test_assets/t7_laplacian.jpg";
+    let inp_path = "tests/test_assets/t5.jpg";
+    let op_path = "tests/test_assets/t5_laplacian.jpg";
     let mut img = open_image(inp_path).expect("No such file found");
     monochrome::grayscale(&mut img);
 
@@ -70,8 +70,8 @@ fn test_convolution_laplacian() {
 }
 #[test]
 fn test_convolution_median() {
-    let inp_path = "tests/test_assets/t7.jpg";
-    let op_path = "tests/test_assets/t7_median.jpg";
+    let inp_path = "tests/test_assets/t5.jpg";
+    let op_path = "tests/test_assets/t5_median.jpg";
     let img = open_image(inp_path).expect("No such file found");
 
     let median: Vec<f32> = vec![
@@ -85,8 +85,8 @@ fn test_convolution_median() {
 
 #[test]
 fn test_convolution_gaussian_7x7() {
-    let inp_path = "tests/test_assets/t7.jpg";
-    let op_path = "tests/test_assets/t7_gaussian7x7.jpg";
+    let inp_path = "tests/test_assets/t5.jpg";
+    let op_path = "tests/test_assets/t5_gaussian7x7.jpg";
     let mut img = open_image(inp_path).expect("No such file found");
     monochrome::grayscale(&mut img);
     let gaussian: Vec<f32> = vec![
@@ -102,8 +102,8 @@ fn test_convolution_gaussian_7x7() {
 }
 #[test]
 fn test_convolution_denoise() {
-    let inp_path = "tests/test_assets/t7.jpg";
-    let op_path = "tests/test_assets/t7_denoise.jpg";
+    let inp_path = "tests/test_assets/t5.jpg";
+    let op_path = "tests/test_assets/t5_denoise.jpg";
     let img = open_image(inp_path).expect("No such file found");
 
     let denoise = vec![
