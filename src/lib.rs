@@ -127,3 +127,4 @@ pub fn dynamic_to_photon(dynamic_image: &DynamicImage) -> PhotonImage {
 }
 
 pub mod conv;
+pub mod padding;
