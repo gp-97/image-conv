@@ -1,3 +1,5 @@
+//! Image convolution
+
 use crate::Filter;
 use photon_rs::transform::padding_uniform as uniform;
 use photon_rs::PhotonImage;
@@ -126,6 +128,27 @@ fn adjust_data_params(
     convolve(img_padded, filter, img_conv_width, img_conv_height, stride)
 }
 
+/// Applies convoultion on the image
+///
+/// # Arguments
+/// * `img` - A Photon Image.
+/// * `filter` - A Filter object.
+/// * `stride` - Stride value for convolution.
+/// * `padding` - Padding type ("uniform" or "none").
+/// * `padding_amt` - Amount of padding in pixels.
+///
+/// # Example
+///
+/// ```no_run
+/// // For example, to apply horizontal sobel filter:
+/// use image_conv::conv;
+/// use image_conv::Filter;
+///
+/// let img = photon_rs::native::open_image("img.jpg").expect("No such file found");
+/// let sobel_x: Vec<f32> = vec![1.0, 0.0, -1.0, 2.0, 0.0, -2.0, 1.0, 0.0, -1.0];
+/// let filter = Filter::from(sobel_x, 3, 3);     
+/// let img_conv = conv::convolution(&img, filter, 1, "uniform", 1);
+///```
 pub fn convolution(
     img: &PhotonImage,
     filter: Filter,
