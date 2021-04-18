@@ -1,5 +1,9 @@
 <h1 align="center">image-conv</h1>
-<img align="center" alt="GitHub" src="https://img.shields.io/github/license/gp-97/image-conv">
+<div align="center">
+
+  <img alt="GitHub" src="https://img.shields.io/github/license/gp-97/image-conv">
+
+</div>
 <div align="center">
   
   [![Status](https://img.shields.io/badge/status-active-success.svg)]()
