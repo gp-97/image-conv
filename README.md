@@ -17,7 +17,7 @@
 
 <p align="center">A high performance Rust library for image convolution.</p>
 
-- [Documentation](https://docs.rs/image-conv/0.1.1/image_conv/)
+- [Documentation](https://docs.rs/image-conv/0.1.2/image_conv/index.html)
 - [crate.io](https://crates.io/crates/image-conv)
 
 ### Some example ouputs
