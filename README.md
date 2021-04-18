@@ -17,12 +17,22 @@
 - [crate.io](https://crates.io/crates/image-conv)
 
 ### Some example ouputs
-|Image|Sobel-X|Sobel-Y|Scharr-X|Scharr-Y|Laplacian|Median|Gaussian|Denoise|
-|-----|-------|-------|--------|--------|-------|------|----------|-------|
-  
-
+|Original|
+![Original](assets/t5.jpg)
+|Sobel-X|Sobel-Y|
+|-------|-------|
+|![Sobel-X](assets/t5_sobelX.jpg)|![Sobel-Y](assets/t5_sobelY.jpg)|
+|Scharr-X|Scharr-Y|
+|--------|--------|
+![Scharr-X](assets/t5_scharrX.jpg)|![Scharr-Y](assets/t5_scharrY.jpg)|
+|Laplacian|Median|
+|-------|------|
+|![Laplacian](assets/t5_laplacian.jpg)|![Median](assets/t5_median.jpg)|
+|Gaussian|Denoise|
+|---------|-------|
+|![Gaussian](assets/t5_gaussian7x7.jpg)|![Denoise](assets/t5_denoise.jpg)|  
 ### Example usage
-- Apply horizontal Sobel kernel
+- Apply horizontal Sobel filter:
 ```rust
   use image_conv::conv;
   use image_conv::Filter;
