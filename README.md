@@ -18,7 +18,8 @@
 
 ### Some example ouputs
 |Original|
-![Original](assets/t5.jpg)
+|--------|
+|![Original](assets/t5.jpg)|
 |Sobel-X|Sobel-Y|
 |-------|-------|
 |![Sobel-X](assets/t5_sobelX.jpg)|![Sobel-Y](assets/t5_sobelY.jpg)|
