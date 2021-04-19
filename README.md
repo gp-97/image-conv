@@ -20,26 +20,6 @@
 - [Documentation](https://docs.rs/image-conv/0.1.3/image_conv/index.html)
 - [crate.io](https://crates.io/crates/image-conv)
 
-### Some example ouputs
-|Original|
-|--------|
-|![Original](assets/t5.jpg)|
-
-|Sobel-X|Sobel-Y|
-|-------|-------|
-|![Sobel-X](assets/t5_sobelX.jpg)|![Sobel-Y](assets/t5_sobelY.jpg)|
-
-|Scharr-X|Scharr-Y|
-|--------|--------|
-![Scharr-X](assets/t5_scharrX.jpg)|![Scharr-Y](assets/t5_scharrY.jpg)|
-
-|Laplacian|Median|
-|-------|------|
-|![Laplacian](assets/t5_laplacian.jpg)|![Median](assets/t5_median.jpg)|
-
-|Gaussian|Denoise|
-|---------|-------|
-|![Gaussian](assets/t5_gaussian7x7.jpg)|![Denoise](assets/t5_denoise.jpg)|  
 ### Example usage
 - Apply horizontal Sobel filter:
 ```rust
@@ -60,3 +40,25 @@
       save_image(img_conv, "img_conv.jpg");
   }
 ```
+
+
+### Some example ouputs
+|Original|
+|--------|
+|![Original](assets/t5.jpg)|
+
+|Sobel-X|Sobel-Y|
+|-------|-------|
+|![Sobel-X](assets/t5_sobelX.jpg)|![Sobel-Y](assets/t5_sobelY.jpg)|
+
+|Scharr-X|Scharr-Y|
+|--------|--------|
+![Scharr-X](assets/t5_scharrX.jpg)|![Scharr-Y](assets/t5_scharrY.jpg)|
+
+|Laplacian|Median|
+|-------|------|
+|![Laplacian](assets/t5_laplacian.jpg)|![Median](assets/t5_median.jpg)|
+
+|Gaussian|Denoise|
+|---------|-------|
+|![Gaussian](assets/t5_gaussian7x7.jpg)|![Denoise](assets/t5_denoise.jpg)|  
