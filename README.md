@@ -1,5 +1,5 @@
 <h1 align="center">image-conv</h1>
-<p align="center">A high performance Rust library for image convolution.</p>
+<p align="center">Rust library for image convolution.</p>
 
 --- 
 
