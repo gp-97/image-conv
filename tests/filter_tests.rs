@@ -3,7 +3,7 @@ use image_conv::Filter;
 #[test]
 fn test_filter_init() {
     let k = Filter::new(5, 5);
-    assert_eq!(k.kernel(), vec![0 as f32; 24]);
+    assert_eq!(k.kernel(), vec![0 as f32; 25]);
 }
 
 #[test]
