@@ -1,8 +1,7 @@
 //! Image convolution
 
 use crate::padding::uniform;
-use crate::Filter;
-use crate::PaddingType;
+use crate::{Filter, PaddingType};
 use photon_rs::PhotonImage;
 
 fn convolve(img_padded: &PhotonImage, filter: &Filter, width_conv: u32, height_conv: u32, stride: u32) -> PhotonImage {
