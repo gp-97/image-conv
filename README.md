@@ -24,7 +24,7 @@
 - Apply horizontal Sobel filter:
 ```rust
   use image_conv::conv;
-  use image_conv::Filter;
+  use image_conv::{Filter, PaddingType};
   use photon_rs::native::{open_image, save_image};
 
   fn main() {
@@ -36,7 +36,7 @@
       let filter = Filter::from(sobel_x, 3, 3);
 
       // Apply convolution    
-      let img_conv = conv::convolution(&img, filter, 1, "uniform", 1);
+      let img_conv = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
       save_image(img_conv, "img_conv.jpg");
   }
 ```
