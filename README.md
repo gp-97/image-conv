@@ -10,6 +10,7 @@
   [![GitHub Issues](https://img.shields.io/github/issues/gp-97/image-conv.svg)](https://github.com/gp-97/image-conv/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/gp-97/image-conv.svg)](https://github.com/gp-97/image-conv/pulls)
   ![Crates.io (recent)](https://img.shields.io/crates/dr/image-conv?style=plastic)
+  ![Github Workflow](https://github.com/gp-97/image-conv/actions/workflows/main.yml/badge.svg)
 
 </div>
 
