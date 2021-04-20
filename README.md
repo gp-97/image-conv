@@ -1,9 +1,12 @@
 <h1 align="center">image-conv</h1>
+<p align="center">A high performance Rust library for image convolution.</p>
+
 <div align="center">
 
   <img alt="GitHub" src="https://img.shields.io/github/license/gp-97/image-conv">
 
 </div>
+
 <div align="center">
   
   [![Status](https://img.shields.io/badge/status-active-success.svg)]()
@@ -15,8 +18,6 @@
 </div>
 
 ---
-
-<p align="center">A high performance Rust library for image convolution.</p>
 
 - [Documentation](https://docs.rs/image-conv/0.2.0/image_conv/index.html)
 - [crate.io](https://crates.io/crates/image-conv)
