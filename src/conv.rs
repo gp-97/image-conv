@@ -4,13 +4,7 @@ use crate::padding::uniform;
 use crate::Filter;
 use photon_rs::PhotonImage;
 
-fn convolve(
-    img_padded: &PhotonImage,
-    filter: &Filter,
-    width_conv: u32,
-    height_conv: u32,
-    stride: u32,
-) -> PhotonImage {
+fn convolve(img_padded: &PhotonImage, filter: &Filter, width_conv: u32, height_conv: u32, stride: u32) -> PhotonImage {
     let raw_pixel_padded = img_padded.get_raw_pixels();
     let width_padded = img_padded.get_width() as usize;
     let height_padded = img_padded.get_height() as usize;
@@ -117,9 +111,7 @@ fn adjust_data_params(
             img_conv_height += 1;
         }
         _ => {
-            eprintln!(
-                "[ERROR]: Couldn't ascertain the padding type and its amount.\n Using zero padding"
-            );
+            eprintln!("[ERROR]: Couldn't ascertain the padding type and its amount.\n Using zero padding");
             img_conv_width = img.get_width() - filter.width() as u32 + 1;
             img_conv_height = img.get_height() - filter.height() as u32 + 1;
         }
@@ -149,13 +141,7 @@ fn adjust_data_params(
 /// let filter = Filter::from(sobel_x, 3, 3);     
 /// let img_conv = conv::convolution(&img, filter, 1, "uniform", 1);
 ///```
-pub fn convolution(
-    img: &PhotonImage,
-    filter: Filter,
-    stride: u32,
-    padding: &str,
-    padding_amt: u32,
-) -> PhotonImage {
+pub fn convolution(img: &PhotonImage, filter: Filter, stride: u32, padding: &str, padding_amt: u32) -> PhotonImage {
     match stride {
         0 => {
             eprintln!("[ERROR]: Stride provided = 0");

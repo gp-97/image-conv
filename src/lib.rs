@@ -46,11 +46,7 @@ impl Filter {
     pub fn new(width: usize, height: usize) -> Self {
         let mut kernel = Vec::<f32>::new();
         Vec::resize(&mut kernel, width * height, 0_f32);
-        Self {
-            width,
-            height,
-            kernel,
-        }
+        Self { width, height, kernel }
     }
     /// Creates and returns a Filter object from a vector of kernel data
     pub fn from(kernel_buffer: Vec<f32>, width: usize, height: usize) -> Self {

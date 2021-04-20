@@ -16,8 +16,5 @@ fn test_kernel_val_assignment() {
         }
     }
 
-    assert_eq!(
-        k.kernel(),
-        vec![10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
-    );
+    assert_eq!(k.kernel(), vec![10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0]);
 }

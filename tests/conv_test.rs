@@ -74,9 +74,7 @@ fn test_convolution_median() {
     let op_path = "tests/test_assets/t5_median.jpg";
     let img = open_image(inp_path).expect("No such file found");
 
-    let median: Vec<f32> = vec![
-        0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111,
-    ];
+    let median: Vec<f32> = vec![0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111];
     let filter = Filter::from(median, 3, 3);
     let img = conv::convolution(&img, filter, 1, "uniform", 1);
 
@@ -90,9 +88,9 @@ fn test_convolution_gaussian_7x7() {
     let mut img = open_image(inp_path).expect("No such file found");
     monochrome::grayscale(&mut img);
     let gaussian: Vec<f32> = vec![
-        1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 2.0, 2.0, 4.0, 2.0, 2.0, 1.0, 2.0, 2.0, 4.0, 8.0,
-        4.0, 2.0, 2.0, 2.0, 4.0, 8.0, 16.0, 8.0, 4.0, 2.0, 2.0, 2.0, 4.0, 8.0, 4.0, 2.0, 2.0, 1.0,
-        2.0, 2.0, 4.0, 2.0, 2.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0,
+        1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 2.0, 2.0, 4.0, 2.0, 2.0, 1.0, 2.0, 2.0, 4.0, 8.0, 4.0, 2.0, 2.0, 2.0,
+        4.0, 8.0, 16.0, 8.0, 4.0, 2.0, 2.0, 2.0, 4.0, 8.0, 4.0, 2.0, 2.0, 1.0, 2.0, 2.0, 4.0, 2.0, 2.0, 1.0, 1.0, 1.0,
+        2.0, 2.0, 2.0, 1.0, 1.0,
     ];
     let gaussian = gaussian.into_iter().map(|val| val / 273.0).collect();
     let filter = Filter::from(gaussian, 7, 7);
@@ -107,8 +105,8 @@ fn test_convolution_denoise() {
     let img = open_image(inp_path).expect("No such file found");
 
     let denoise = vec![
-        2_f32, 4.0, 5.0, 4.0, 2.0, 4.0, 9.0, 12.0, 9.0, 4.0, 5.0, 12.0, 15.0, 12.0, 5.0, 4.0, 9.0,
-        12.0, 9.0, 4.0, 2_f32, 4.0, 5.0, 4.0, 2.0,
+        2_f32, 4.0, 5.0, 4.0, 2.0, 4.0, 9.0, 12.0, 9.0, 4.0, 5.0, 12.0, 15.0, 12.0, 5.0, 4.0, 9.0, 12.0, 9.0, 4.0,
+        2_f32, 4.0, 5.0, 4.0, 2.0,
     ];
     let denoise = denoise.into_iter().map(|val| val / 139.0).collect();
     let filter = Filter::from(denoise, 5, 5);

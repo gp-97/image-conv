@@ -50,8 +50,7 @@ pub fn left(img: &PhotonImage, padding: u32) -> PhotonImage {
     let width_padded: u32 = img_width + padding;
 
     for i in 0..img_height as usize {
-        let img_slice =
-            image_buffer[(i * 4 * img_width as usize)..(i + 1) * 4 * img_width as usize].to_owned();
+        let img_slice = image_buffer[(i * 4 * img_width as usize)..(i + 1) * 4 * img_width as usize].to_owned();
 
         for _ in 0..padding {
             img_padded_buffer.push(0);
@@ -74,8 +73,7 @@ pub fn right(img: &PhotonImage, padding: u32) -> PhotonImage {
     let width_padded: u32 = img_width + padding;
 
     for i in 0..img_height as usize {
-        let img_slice =
-            image_buffer[(i * 4 * img_width as usize)..(i + 1) * 4 * img_width as usize].to_owned();
+        let img_slice = image_buffer[(i * 4 * img_width as usize)..(i + 1) * 4 * img_width as usize].to_owned();
         for x in img_slice {
             img_padded_buffer.push(x);
         }
