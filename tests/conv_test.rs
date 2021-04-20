@@ -1,6 +1,6 @@
 #[cfg(test)]
 use image_conv::conv;
-use image_conv::Filter;
+use image_conv::{Filter, PaddingType};
 use photon_rs::monochrome;
 use photon_rs::native::{open_image, save_image};
 #[test]
@@ -12,7 +12,7 @@ fn test_convolution_sobel_x() {
 
     let sobel_x: Vec<f32> = vec![1.0, 0.0, -1.0, 2.0, 0.0, -2.0, 1.0, 0.0, -1.0];
     let filter = Filter::from(sobel_x, 3, 3);
-    let img = conv::convolution(&img, filter, 1, "uniform", 1);
+    let img = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 
     save_image(img, op_path);
 }
@@ -25,7 +25,7 @@ fn test_convolution_sobel_y() {
 
     let sobel_y: Vec<f32> = vec![1.0, 2.0, 1.0, 0.0, 0.0, 0.0, -1.0, -2.0, -1.0];
     let filter = Filter::from(sobel_y, 3, 3);
-    let img = conv::convolution(&img, filter, 1, "uniform", 1);
+    let img = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 
     save_image(img, op_path);
 }
@@ -38,7 +38,7 @@ fn test_convolution_scharr_x() {
 
     let scharr_x: Vec<f32> = vec![3.0, 0.0, -3.0, 10.0, 0.0, -10.0, 3.0, 0.0, -3.0];
     let filter = Filter::from(scharr_x, 3, 3);
-    let img = conv::convolution(&img, filter, 1, "uniform", 1);
+    let img = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 
     save_image(img, op_path);
 }
@@ -51,7 +51,7 @@ fn test_convolution_scharr_y() {
 
     let scharr_y: Vec<f32> = vec![3.0, 10.0, 3.0, 0.0, 0.0, 0.0, -3.0, -10.0, -3.0];
     let filter = Filter::from(scharr_y, 3, 3);
-    let img = conv::convolution(&img, filter, 1, "uniform", 1);
+    let img = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 
     save_image(img, op_path);
 }
@@ -64,7 +64,7 @@ fn test_convolution_laplacian() {
 
     let laplacian: Vec<f32> = vec![0.0, 1.0, 0.0, 1.0, -4.0, 1.0, 0.0, 1.0, 0.0];
     let filter = Filter::from(laplacian, 3, 3);
-    let img = conv::convolution(&img, filter, 1, "uniform", 1);
+    let img = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 
     save_image(img, op_path);
 }
@@ -76,7 +76,7 @@ fn test_convolution_median() {
 
     let median: Vec<f32> = vec![0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111];
     let filter = Filter::from(median, 3, 3);
-    let img = conv::convolution(&img, filter, 1, "uniform", 1);
+    let img = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 
     save_image(img, op_path);
 }
@@ -94,7 +94,7 @@ fn test_convolution_gaussian_7x7() {
     ];
     let gaussian = gaussian.into_iter().map(|val| val / 273.0).collect();
     let filter = Filter::from(gaussian, 7, 7);
-    let img = conv::convolution(&img, filter, 1, "uniform", 1);
+    let img = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 
     save_image(img, op_path);
 }
@@ -110,7 +110,7 @@ fn test_convolution_denoise() {
     ];
     let denoise = denoise.into_iter().map(|val| val / 139.0).collect();
     let filter = Filter::from(denoise, 5, 5);
-    let img = conv::convolution(&img, filter, 1, "uniform", 1);
+    let img = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 
     save_image(img, op_path);
 }

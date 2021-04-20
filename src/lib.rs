@@ -4,7 +4,7 @@
 //! ## Example
 //! ```no_run
 //! use image_conv::conv;
-//! use image_conv::Filter;
+//! use image_conv::{Filter, PaddingType};
 //! use photon_rs::native::{open_image, save_image};
 //!
 //! fn main() {
@@ -16,10 +16,13 @@
 //!     let filter = Filter::from(sobel_x, 3, 3);
 //!     
 //!     // Apply convolution    
-//!     let img_conv = conv::convolution(&img, filter, 1, "uniform", 1);
+//!     let img_conv = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 //!     save_image(img_conv, "img_conv.jpg");
 //! }
 //! ```
+
+pub mod conv;
+mod padding;
 
 use image::{
     DynamicImage::{self, ImageRgba8},
@@ -109,6 +112,12 @@ impl Filter {
     }
 }
 
+/// Enumeration for available padding types
+pub enum PaddingType {
+    UNIFORM(u32),
+    NONE,
+}
+
 /// For convertion of PhotonImage into Dynamic image
 pub fn photon_to_dynamic(photon_image: &PhotonImage) -> DynamicImage {
     let mut img = helpers::dyn_image_from_raw(photon_image);
@@ -121,6 +130,3 @@ pub fn dynamic_to_photon(dynamic_image: &DynamicImage) -> PhotonImage {
     let image_buffer: Vec<u8> = (*dynamic_image).clone().into_bytes();
     PhotonImage::new(image_buffer, dynamic_image.width(), dynamic_image.height())
 }
-
-pub mod conv;
-pub mod padding;

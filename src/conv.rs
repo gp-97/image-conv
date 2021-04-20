@@ -2,6 +2,7 @@
 
 use crate::padding::uniform;
 use crate::Filter;
+use crate::PaddingType;
 use photon_rs::PhotonImage;
 
 fn convolve(img_padded: &PhotonImage, filter: &Filter, width_conv: u32, height_conv: u32, stride: u32) -> PhotonImage {
@@ -67,19 +68,18 @@ fn convolve(img_padded: &PhotonImage, filter: &Filter, width_conv: u32, height_c
     PhotonImage::new(img_conv, width_conv, height_conv)
 }
 
-fn adjust_data_params(
+fn adjust_convolution_params(
     img: &PhotonImage,
     img_padded: &PhotonImage,
     filter: &Filter,
     stride: u32,
-    padding: &str,
-    pad_amt: u32,
+    padding: PaddingType,
 ) -> PhotonImage {
     let mut img_conv_width: u32;
     let mut img_conv_height: u32;
 
     match padding {
-        "uniform" => {
+        PaddingType::UNIFORM(pad_amt) => {
             img_conv_width = img.get_width() - filter.width() as u32 + 2 * pad_amt;
             if img_conv_width % stride != 0 {
                 eprintln!("[WARNING]: stride value not suitable. Convolution may fail.");
@@ -95,7 +95,7 @@ fn adjust_data_params(
             img_conv_height += 1;
         }
 
-        "none" => {
+        PaddingType::NONE => {
             img_conv_width = img.get_width() - filter.width() as u32;
             if img_conv_width % stride != 0 {
                 eprintln!("[WARNING]: stride value not suitable. Convolution may fail.");
@@ -110,11 +110,6 @@ fn adjust_data_params(
             img_conv_height /= stride;
             img_conv_height += 1;
         }
-        _ => {
-            eprintln!("[ERROR]: Couldn't ascertain the padding type and its amount.\n Using zero padding");
-            img_conv_width = img.get_width() - filter.width() as u32 + 1;
-            img_conv_height = img.get_height() - filter.height() as u32 + 1;
-        }
     };
 
     convolve(img_padded, filter, img_conv_width, img_conv_height, stride)
@@ -126,22 +121,21 @@ fn adjust_data_params(
 /// * `img` - A Photon Image.
 /// * `filter` - A Filter object.
 /// * `stride` - Stride value for convolution.
-/// * `padding` - Padding type ("uniform" or "none").
-/// * `padding_amt` - Amount of padding in pixels.
+/// * `padding` - Padding type (Enum defined in lib.rs).
 ///
 /// # Example
 ///
 /// ```no_run
 /// // For example, to apply horizontal sobel filter:
 /// use image_conv::conv;
-/// use image_conv::Filter;
+/// use image_conv::{Filter, PaddingType};
 ///
 /// let img = photon_rs::native::open_image("img.jpg").expect("No such file found");
 /// let sobel_x: Vec<f32> = vec![1.0, 0.0, -1.0, 2.0, 0.0, -2.0, 1.0, 0.0, -1.0];
 /// let filter = Filter::from(sobel_x, 3, 3);     
-/// let img_conv = conv::convolution(&img, filter, 1, "uniform", 1);
+/// let img_conv = conv::convolution(&img, filter, 1, PaddingType::UNIFORM(1));
 ///```
-pub fn convolution(img: &PhotonImage, filter: Filter, stride: u32, padding: &str, padding_amt: u32) -> PhotonImage {
+pub fn convolution(img: &PhotonImage, filter: Filter, stride: u32, padding: PaddingType) -> PhotonImage {
     match stride {
         0 => {
             eprintln!("[ERROR]: Stride provided = 0");
@@ -149,31 +143,23 @@ pub fn convolution(img: &PhotonImage, filter: Filter, stride: u32, padding: &str
         }
 
         1 => match padding {
-            "uniform" => {
+            PaddingType::UNIFORM(padding_amt) => {
                 let img_padded = uniform(&img, padding_amt);
-                adjust_data_params(img, &img_padded, &filter, stride, padding, padding_amt)
+                adjust_convolution_params(img, &img_padded, &filter, stride, padding)
             }
-            "none" => {
+            PaddingType::NONE => {
                 let img_padded = img.clone();
-                adjust_data_params(img, &img_padded, &filter, stride, padding, 0)
-            }
-            _ => {
-                eprintln!("[ERROR]: Only uniform or no-padding allowed");
-                std::process::exit(1);
+                adjust_convolution_params(img, &img_padded, &filter, stride, padding)
             }
         },
         _ => match padding {
-            "uniform" => {
+            PaddingType::UNIFORM(padding_amt) => {
                 let img_padded = uniform(&img, padding_amt);
-                adjust_data_params(img, &img_padded, &filter, stride, padding, padding_amt)
+                adjust_convolution_params(img, &img_padded, &filter, stride, padding)
             }
-            "none" => {
+            PaddingType::NONE => {
                 let img_padded = img.clone();
-                adjust_data_params(img, &img_padded, &filter, stride, padding, 0)
-            }
-            _ => {
-                eprintln!("[ERROR]: Only uniform or no-padding allowed");
-                std::process::exit(1);
+                adjust_convolution_params(img, &img_padded, &filter, stride, padding)
             }
         },
     }
