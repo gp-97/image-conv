@@ -1,6 +1,8 @@
 <h1 align="center">image-conv</h1>
 <p align="center">A high performance Rust library for image convolution.</p>
 
+--- 
+
 <div align="center">
 
   <img alt="GitHub" src="https://img.shields.io/github/license/gp-97/image-conv">
