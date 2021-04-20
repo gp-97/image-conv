@@ -33,7 +33,7 @@
 
   fn main() {
       // Open an image
-      let mut img = open_image("img.jpg").expect("No such file found");
+      let img = open_image("img.jpg").expect("No such file found");
 
       // Create a filter
       let sobel_x: Vec<f32> = vec![1.0, 0.0, -1.0, 2.0, 0.0, -2.0, 1.0, 0.0, -1.0];
