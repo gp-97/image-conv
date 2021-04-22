@@ -63,7 +63,9 @@ fn convolve(img_padded: &PhotonImage, filter: &Filter, width_conv: u32, height_c
         img_conv.push(255_u8);
     }
 
+    #[cfg(debug_assertions)]
     println!("Convolution done...");
+
     PhotonImage::new(img_conv, width_conv, height_conv)
 }
 
