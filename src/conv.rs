@@ -1,8 +1,9 @@
 //! Image convolution
 
-use crate::padding::uniform;
 use crate::{Filter, PaddingType};
+use photon_rs::transform::padding_uniform as uniform;
 use photon_rs::PhotonImage;
+use photon_rs::Rgba;
 
 fn convolve(img_padded: &PhotonImage, filter: &Filter, width_conv: u32, height_conv: u32, stride: u32) -> PhotonImage {
     let raw_pixel_padded = img_padded.get_raw_pixels();
@@ -145,7 +146,8 @@ pub fn convolution(img: &PhotonImage, filter: Filter, stride: u32, padding: Padd
 
         1 => match padding {
             PaddingType::UNIFORM(padding_amt) => {
-                let img_padded = uniform(&img, padding_amt);
+                let padding_color = Rgba::new(0, 0, 0, 255);
+                let img_padded = uniform(&img, padding_amt, padding_color);
                 adjust_convolution_params(img, &img_padded, &filter, stride, padding)
             }
             PaddingType::NONE => {
@@ -155,7 +157,8 @@ pub fn convolution(img: &PhotonImage, filter: Filter, stride: u32, padding: Padd
         },
         _ => match padding {
             PaddingType::UNIFORM(padding_amt) => {
-                let img_padded = uniform(&img, padding_amt);
+                let padding_color = Rgba::new(0, 0, 0, 255);
+                let img_padded = uniform(&img, padding_amt, padding_color);
                 adjust_convolution_params(img, &img_padded, &filter, stride, padding)
             }
             PaddingType::NONE => {

@@ -22,7 +22,6 @@
 //! ```
 
 pub mod conv;
-mod padding;
 
 use image::{
     DynamicImage::{self, ImageRgba8},
