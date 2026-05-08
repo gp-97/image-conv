@@ -1,8 +1,8 @@
 [package]
 name = "image-conv"
-version = "0.3.0"
+version = "0.4.0"
 authors = ["Gaurav Patel <GauravPatel97@outlook.com>"]
-edition = "2018"
+edition = "2021"
 license = "Apache-2.0"
 description = "High performance image convolution library."
 categories = ["multimedia", "multimedia::images"]
@@ -14,6 +14,13 @@ exclude = [
 ]
 
 [dependencies]
-photon-rs = "0.3.1"
-image = "0.23.13"
-prettytable-rs = "^0.8"
+photon-rs = "0.3.3"
+image = "0.24"
+prettytable-rs = "0.10"
+
+[dev-dependencies]
+criterion = "0.8.2"
+
+[[bench]]
+name = "conv_bench"
+harness = false

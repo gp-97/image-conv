@@ -1,3 +1,6 @@
+//! Unit tests for the Filter struct — initialization, value assignment, and
+//! separable decomposition detection.
+
 #[cfg(test)]
 use image_conv::Filter;
 #[test]
