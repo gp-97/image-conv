@@ -166,9 +166,8 @@ fn test_separable_detection() {
 fn test_convolution_known_values_2d() {
     // 3x3 image, Laplacian 3x3 (non-separable, tests 2D path)
     let pixels = vec![
-        10,20,30,255, 40,50,60,255, 70,80,90,255,
-        100,110,120,255, 130,140,150,255, 160,170,180,255,
-        190,200,210,255, 220,230,240,255, 250,250,250,255,
+        10, 20, 30, 255, 40, 50, 60, 255, 70, 80, 90, 255, 100, 110, 120, 255, 130, 140, 150, 255, 160, 170, 180, 255,
+        190, 200, 210, 255, 220, 230, 240, 255, 250, 250, 250, 255,
     ];
     let img = photon_rs::PhotonImage::new(pixels, 3, 3);
 
@@ -195,14 +194,13 @@ fn test_convolution_known_values_2d() {
 fn test_convolution_known_values_separable() {
     // 4x4 image, Sobel-X 3x3 (separable), stride=1, NONE padding → output 2x2
     let pixels = vec![
-        10,0,0,255,  50,0,0,255,  100,0,0,255,  150,0,0,255,
-        20,0,0,255,  60,0,0,255,  110,0,0,255,  160,0,0,255,
-        30,0,0,255,  70,0,0,255,  120,0,0,255,  170,0,0,255,
-        40,0,0,255,  80,0,0,255,  130,0,0,255,  180,0,0,255,
+        10, 0, 0, 255, 50, 0, 0, 255, 100, 0, 0, 255, 150, 0, 0, 255, 20, 0, 0, 255, 60, 0, 0, 255, 110, 0, 0, 255,
+        160, 0, 0, 255, 30, 0, 0, 255, 70, 0, 0, 255, 120, 0, 0, 255, 170, 0, 0, 255, 40, 0, 0, 255, 80, 0, 0, 255,
+        130, 0, 0, 255, 180, 0, 0, 255,
     ];
     let img = photon_rs::PhotonImage::new(pixels, 4, 4);
 
-    let sobel_x: Vec<f32> = vec![1.0,0.0,-1.0, 2.0,0.0,-2.0, 1.0,0.0,-1.0];
+    let sobel_x: Vec<f32> = vec![1.0, 0.0, -1.0, 2.0, 0.0, -2.0, 1.0, 0.0, -1.0];
     let filter = Filter::from(sobel_x, 3, 3);
     let result = conv::convolution(&img, filter, 1, PaddingType::NONE);
 
