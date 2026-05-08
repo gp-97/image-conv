@@ -17,6 +17,7 @@ exclude = [
 photon-rs = "0.3.3"
 image = "0.24"
 prettytable-rs = "0.10"
+rayon = "1.12.0"
 
 [dev-dependencies]
 criterion = "0.8.2"
