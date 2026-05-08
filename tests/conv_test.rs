@@ -123,10 +123,7 @@ fn test_convolution_denoise() {
 
 #[test]
 fn test_separable_correctness() {
-    let pixels = vec![
-        10, 20, 30, 255,  50, 60, 70, 255,
-        90, 100, 110, 255,  130, 140, 150, 255,
-    ];
+    let pixels = vec![10, 20, 30, 255, 50, 60, 70, 255, 90, 100, 110, 255, 130, 140, 150, 255];
     let img = photon_rs::PhotonImage::new(pixels, 2, 2);
 
     let separable: Vec<f32> = vec![1.0, 2.0, 1.0, 2.0, 4.0, 2.0, 1.0, 2.0, 1.0];
@@ -153,7 +150,10 @@ fn test_separable_detection() {
         for j in 0..3 {
             let val = col[i] * row[j];
             let expected = kernel[i * 3 + j];
-            assert!((val - expected).abs() < 1e-4, "mismatch at [{i}][{j}]: {val} != {expected}");
+            assert!(
+                (val - expected).abs() < 1e-4,
+                "mismatch at [{i}][{j}]: {val} != {expected}"
+            );
         }
     }
 
@@ -161,4 +161,3 @@ fn test_separable_detection() {
     let f = Filter::from(nonsep, 2, 2);
     assert!(f.try_separable().is_none());
 }
-

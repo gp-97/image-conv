@@ -83,13 +83,7 @@ use photon_rs::Rgba;
 ///
 /// Output buffer is pre-allocated with `with_capacity` to avoid reallocations.
 /// All channels are accumulated as `f32` and clamped to `[0, 255]` at the end.
-fn convolve(
-    img_padded: &PhotonImage,
-    filter: &Filter,
-    width_conv: u32,
-    height_conv: u32,
-    stride: u32,
-) -> PhotonImage {
+fn convolve(img_padded: &PhotonImage, filter: &Filter, width_conv: u32, height_conv: u32, stride: u32) -> PhotonImage {
     let raw = img_padded.get_raw_pixels();
     let wp = img_padded.get_width() as usize;
     let fw = filter.width;

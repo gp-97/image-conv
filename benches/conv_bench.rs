@@ -8,8 +8,8 @@
 //! Run with: `cargo bench`
 
 use criterion::{criterion_group, criterion_main, Criterion};
-use image_conv::{Filter, PaddingType};
 use image_conv::conv;
+use image_conv::{Filter, PaddingType};
 use std::hint::black_box;
 
 fn dummy_image(width: u32, height: u32) -> photon_rs::PhotonImage {
