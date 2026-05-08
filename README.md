@@ -87,7 +87,7 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-image-conv = "0.4"
+image-conv = "1.0"
 photon-rs = "0.3"
 ```
 
